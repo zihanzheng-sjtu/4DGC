@@ -1,0 +1,1 @@
+python train_frames.py --read_config --config_path test/coffee_martini/cfg_args.json -o outputs/coffee_martini_test -m /mnt/Projects/4DGC/test/coffee_martini -v /mnt/Datasets/3D_Video_Asset/coffee_martini --image images --first_load_iteration 10000
