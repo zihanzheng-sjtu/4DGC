@@ -1,4 +1,4 @@
 outputs/
-test/
+test/coffee_martini
 submodules/
 mem/*.pth
