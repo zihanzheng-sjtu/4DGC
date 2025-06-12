@@ -20,7 +20,7 @@ Yanfeng Wang<sup>&dagger;</sup>
 ## Experiment
 1. Prepare the Enveriment:
 
-    Firstly, follow the instructions in [gaussian-splatting]("https://github.com/graphdeco-inria/gaussian-splatting/tree/main") to setup the environment and submodules. After that, you should install several additional packages:
+    Firstly, follow the instructions in <a href="https://github.com/graphdeco-inria/gaussian-splatting/tree/main">gaussian-splatting</a> to setup the environment and submodules. After that, you should install several additional packages:
     ```
     pip install compressai
     pip install range-coder
