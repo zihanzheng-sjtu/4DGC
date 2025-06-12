@@ -28,7 +28,7 @@ Yanfeng Wang<sup>&dagger;</sup>
 
 2. Prepare the Multi-view Video Dataset:
     
-    Follow [3DGStream]("https://github.com/SJoJoK/3DGStream") to get the dataset folder like this:
+    Follow <a href="https://github.com/SJoJoK/3DGStream">3DGStream</a> to get the dataset folder like this:
     ```
     dataset/coffee_martini
     |---colmap_0
@@ -50,7 +50,7 @@ Yanfeng Wang<sup>&dagger;</sup>
     to get the compressed initial 3DGS. Then, copy the checkpoint `outputs/coffee_martini_initial` to the folder `test`, copy `test/cfg_args.json` into the checkpoint folder and modify the parameters therein accordingly.
 4. Warm up the MEM:
 
-    Following [3DGStream]("https://github.com/SJoJoK/3DGStream"), we also designed the MEM warm up. Just run
+    Following <a href="https://github.com/SJoJoK/3DGStream">3DGStream</a>, we also designed the MEM warm up. Just run
     ```
     cd scripts
     python Motion_Grid_warmup.py --pcd_pth <test/xxx/point_cloud/iteration_xxx/point_cloud.ply> --q <quantization step size> --output_path <mem/xxx.pth>
@@ -64,7 +64,7 @@ Yanfeng Wang<sup>&dagger;</sup>
     ```
 
 ## Acknowledgement
-We sincerely thank the  foundational work of [3DGStream]("https://github.com/SJoJoK/3DGStream"), [3DGS]("https://github.com/graphdeco-inria/gaussian-splatting/tree/main") and [Compressai]("https://github.com/InterDigitalInc/CompressAI"), which form the basis of the 4DGC code.
+We sincerely thank the  foundational work of <a href="https://github.com/SJoJoK/3DGStream">3DGStream</a>, <a href="https://github.com/graphdeco-inria/gaussian-splatting/tree/main">gaussian-splatting</a> and <a href="https://github.com/InterDigitalInc/CompressAI">Compressai</a>, which form the basis of the 4DGC code.
 
 ## Citation
 
