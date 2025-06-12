@@ -3,8 +3,7 @@
 <p>
 <div style="text-align: center;">
 <a href="https://qianghu-huber.github.io/qianghuhomepage/">Qiang Hu</a><sup>*</sup>,
-<a href="https://zihanzheng-sjtu.github.io/">Zihan Zheng</a><sup>*</sup>, Houqiang Zhong, Sihua Fu, <br>
-Li Song, 
+<a href="https://zihanzheng-sjtu.github.io/">Zihan Zheng</a><sup>*</sup>, Houqiang Zhong, Sihua Fu, Li Song, 
 Xiaoyun Zhang<sup>&dagger;</sup>, Guangtao Zhai, 
 Yanfeng Wang<sup>&dagger;</sup>
 </div>
