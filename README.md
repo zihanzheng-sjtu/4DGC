@@ -25,7 +25,7 @@ Yanfeng Wang<sup>&dagger;</sup>
     pip install compressai
     pip install range-coder
     ```
-    There may still be some libraries not included. I will update the pip list after organizing them.
+    Some dependencies may still be missing from the list. Although `requirements.txt` currently includes all installed libraries, some entries may be unnecessary. I will clean up and update the pip list accordingly.
 
 2. Prepare the Multi-view Video Dataset:
     
