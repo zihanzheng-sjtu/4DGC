@@ -107,12 +107,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         Ll1 = l1_loss(image, gt_image)
 
         loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image)) 
-        # f_dc = gaussians._features_dc.contiguous()
-        # f_rest = gaussians._features_rest.contiguous()
-        # attributes = torch.cat((f_dc, f_rest), dim=1).view((f_dc.shape[0],f_dc.shape[1]+f_rest.shape[1],3,1)).permute(3,1,2,0)
-        # y_hat, y_likelihoods = gaussians.entropy_bottleneck(attributes) 
-        # codec_loss = criterion(y_hat,y_likelihoods, attributes)['loss'] 
-        # loss += opt.lambda_rd_base * codec_loss 
+        f_dc = gaussians._features_dc.contiguous()
+        f_rest = gaussians._features_rest.contiguous()
+        attributes = torch.cat((f_dc, f_rest), dim=1).view((f_dc.shape[0],f_dc.shape[1]+f_rest.shape[1],3,1)).permute(3,1,2,0)
+        y_hat, y_likelihoods = gaussians.entropy_bottleneck(attributes) 
+        codec_loss = criterion(y_hat,y_likelihoods, attributes)['loss'] 
+        loss += opt.lambda_rd_base * codec_loss 
         loss.backward()
 
         iter_end.record()

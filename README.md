@@ -25,6 +25,7 @@ Yanfeng Wang<sup>&dagger;</sup>
     pip install compressai
     pip install range-coder
     ```
+    There may still be some libraries not included. I will update the pip list after organizing them.
 
 2. Prepare the Multi-view Video Dataset:
     
