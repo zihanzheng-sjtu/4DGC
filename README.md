@@ -25,6 +25,8 @@ Yanfeng Wang<sup>&dagger;</sup>
     pip install compressai
     pip install range-coder
     ```
+    **Note:** We are using the `59f5f77` branch of diff-gaussian-rasterization.
+    
     Some dependencies may still be missing from the list. Although `requirements.txt` currently includes all installed libraries, some entries may be unnecessary. I will clean up and update the pip list accordingly.
 
 2. Prepare the Multi-view Video Dataset:
