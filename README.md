@@ -11,6 +11,7 @@ Yanfeng Wang<sup>&dagger;</sup>
 
 <p>
 <div style="text-align: center;">
+<a href="https://mediax-sjtu.github.io/4dgc/">[Project Page]</a>,
 <a href="https://openaccess.thecvf.com/content/CVPR2025/html/Hu_4DGC_Rate-Aware_4D_Gaussian_Compression_for_Efficient_Streamable_Free-Viewpoint_Video_CVPR_2025_paper.html">[CVPR]</a>,
 <a href="https://arxiv.org/abs/2503.18421v1">[arXiv]</a>
 </div>
