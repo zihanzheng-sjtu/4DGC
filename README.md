@@ -49,15 +49,16 @@ Yanfeng Wang<sup>&dagger;</sup>
 
     Run
     ```
-    python train_initial.py -s dataset/coffee_martini/colmap_0 -o outputs/coffee_martini -m outputs/coffee_martini_initial --eval (-r 2)
+    python train_initial.py -s dataset/coffee_martini/colmap_0 -o outputs/coffee_martini -m outputs/coffee_martini--eval (-r 2)
     ```
-    to get the compressed initial 3DGS. Then, copy the checkpoint `outputs/coffee_martini_initial` to the folder `test`, copy `test/cfg_args.json` into the checkpoint folder and modify the parameters therein accordingly.
+    to get the compressed initial 3DGS. Then, copy the checkpoint `outputs/coffee_martini to the folder `test`, copy `test/cfg_args.json` into the checkpoint folder and modify the parameters therein accordingly.
 4. Warm up the MEM:
 
     Following <a href="https://github.com/SJoJoK/3DGStream">3DGStream</a>, we also designed the MEM warm up. Just run
     ```
     cd scripts
-    python Motion_Grid_warmup.py --pcd_pth <test/xxx/point_cloud/iteration_xxx/point_cloud.ply> --q <quantization step size> --output_path <mem/xxx.pth>
+    python Motion_Grid_warmup.py --pcd_pth <../test/xxx/point_cloud/iteration_xxx/point_cloud.ply> --q <quantization step size> --output_path <../mem/xxx.pth>
+    cd ..
     ``` 
 5. Train the full 4DGC:
 

@@ -107,12 +107,15 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         Ll1 = l1_loss(image, gt_image)
 
         loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image)) 
-        f_dc = gaussians._features_dc.contiguous()
-        f_rest = gaussians._features_rest.contiguous()
-        attributes = torch.cat((f_dc, f_rest), dim=1).view((f_dc.shape[0],f_dc.shape[1]+f_rest.shape[1],3,1)).permute(3,1,2,0)
-        y_hat, y_likelihoods = gaussians.entropy_bottleneck(attributes) 
-        codec_loss = criterion(y_hat,y_likelihoods, attributes)['loss'] 
-        loss += opt.lambda_rd_base * codec_loss 
+
+        if opt.lambda_rd_base > 0:
+            f_dc = gaussians._features_dc.contiguous()
+            f_rest = gaussians._features_rest.contiguous()
+            attributes = torch.cat((f_dc, f_rest), dim=1).view((f_dc.shape[0],f_dc.shape[1]+f_rest.shape[1],3,1)).permute(3,1,2,0)
+            y_hat, y_likelihoods = gaussians.entropy_bottleneck(attributes) 
+            codec_loss = criterion(y_hat,y_likelihoods, attributes)['loss'] 
+            loss += opt.lambda_rd_base * codec_loss 
+            
         loss.backward()
 
         iter_end.record()
@@ -222,8 +225,8 @@ if __name__ == "__main__":
     parser.add_argument('--port', type=int, default=6009)
     parser.add_argument('--debug_from', type=int, default=-1)
     parser.add_argument('--detect_anomaly', action='store_true', default=False)
-    parser.add_argument("--test_iterations", nargs="+", type=int, default=[10_000])
-    parser.add_argument("--save_iterations", nargs="+", type=int, default=[10_000])
+    parser.add_argument("--test_iterations", nargs="+", type=int, default=[3_000, 4000, 5_000, 6000, 7_000, 10_000])
+    parser.add_argument("--save_iterations", nargs="+", type=int, default=[3_000, 4000, 5_000, 6000, 7_000, 10_000])
     parser.add_argument("--quiet", action="store_true")
     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
     parser.add_argument("--start_checkpoint", type=str, default = None)

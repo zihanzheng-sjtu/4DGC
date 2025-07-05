@@ -29,7 +29,7 @@
     "lambda_drot": 0,
     "densification_interval": 20,
     "opacity_reset_interval": 3000,
-    "densify_from_iter": 400,
+    "densify_from_iter": 380,
     "densify_until_iter": 15000,
     "densify_grad_threshold": 0.00015,
     "mem_path": "mem/coffee_martini.pth",

@@ -71,7 +71,7 @@ def training_one_frame(dataset, opt, pipe, load_iteration, testing_iterations, s
     first_iter = 0
     tb_writer = prepare_output_and_logger(dataset)
 
-    gaussians = GaussianModel(dataset.sh_degree, q = 1)
+    gaussians = GaussianModel(dataset.sh_degree, q = dataset.q)
     scene = Scene(dataset, gaussians, load_iteration=load_iteration, shuffle=False)
     gaussians.training_one_frame_setup(opt)
     if checkpoint:
@@ -117,7 +117,7 @@ def training_one_frame(dataset, opt, pipe, load_iteration, testing_iterations, s
             Ll1 = l1_loss(image, gt_image)
             ssim_img = ssim(image,gt_image)
             loss += (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim_img)
-            loss += 1e-5 * gaussians.mem.model.train_entropy(q=1) 
+            loss += 1e-5 * gaussians.mem.model.train_entropy(q=dataset.q) 
 
         loss/=opt.batch_size
         loss.backward()
@@ -382,21 +382,14 @@ def train_frames(lp, op, pp, args):
         args.source_path = os.path.join(video_path, frame)
         args.output_path = os.path.join(output_path, frame)
         args.model_path = model_path
-        # print(args.source_path,args.output_path)
+        
         res_dict = train_one_frame(lp,op,pp,args)
 
         result1_psnr.append(res_dict[f'stage1/psnr_0'])
         result2_psnr.append(res_dict[f'stage2/psnr_0'])
         result1_ssim.append(res_dict[f'stage1/ssim_0'])
         result2_ssim.append(res_dict[f'stage2/ssim_0'])
-        # print(result1_psnr)
-        # draw result1 and result2
-        # plt.clf()
-        # plt.plot(range(len(result1_psnr)), result1_psnr, label='stage1',color='green')
-        # plt.plot(range(len(result2_psnr)), result2_psnr, label='stage2',color='red')
-        # plt.xlabel('frame')
-        # plt.ylabel('psnr')
-        # plt.savefig(os.path.join(output_path, 'train_result.png'))
+
         output_str = "avg: stage{} PSNR {} SSIM {}".format(1,sum(result1_psnr)/len(result1_psnr),sum(result1_ssim)/len(result1_ssim))
         print(output_str)
         output_str = "avg: stage{} PSNR {} SSIM {}".format(2,sum(result2_psnr)/len(result2_psnr),sum(result2_ssim)/len(result2_ssim))

@@ -98,9 +98,9 @@ class OptimizationParams(ParamGroup):
         self.densify_from_iter = 500
         self.densify_until_iter = 15_000
         self.densify_grad_threshold = 0.0002
-        self.xyz_threshold = 0.1
+        self.xyz_threshold = 1
         self.rot_threshold = 0.785
-        self.scale_threshold = -2
+        self.scale_threshold = -1
         self.mem_path = ""
         self.batch_size = 1
         self.s2_adding = False
@@ -109,7 +109,7 @@ class OptimizationParams(ParamGroup):
         self.std_scale=1
         # self.min_opacity = 0.002
         self.min_opacity = 0.005
-        self.lambda_rd_base = 0.000001
+        self.lambda_rd_base = 0
         self.rotate_sh = False
         self.only_mlp = False
         super().__init__(parser, "Optimization Parameters")

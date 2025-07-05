@@ -711,7 +711,6 @@ class GaussianModel:
         added_rotation_clone = self.get_rotation[selected_pts_mask_clone].clone().detach().requires_grad_(True)
 
         # Combine spawned and cloned Gaussians
-
         total_spawn = added_xyz_spawn.shape[0]
         total_clone = added_xyz_clone.shape[0]
 
@@ -920,7 +919,7 @@ class GaussianModel_base:
     @property
     def get_rotation(self):
         if self.is_train:
-            noise_scale = (torch.max(self._rotation) - torch.min(self._rotation)) / 65535.0
+            noise_scale = (torch.max(self._rotation) - torch.min(self._rotation)) / 255.0
             noise = torch.rand_like(self._rotation) * noise_scale - noise_scale / 2.0
             return self.rotation_activation(self._rotation + noise)
         else:    
