@@ -361,11 +361,8 @@ def train_frames(lp, op, pp, args):
     output_path=args.output_path
     model_path=args.model_path
     load_iteration = args.load_iteration
-    # print(video_path)
     sub_paths = os.listdir(video_path)
-    # pattern = re.compile(r'frame(\d+)')
     pattern = re.compile(r'colmap_(\d+)')
-    # print(sub_paths) # ['input.db', 'sparse', 'manual', 'run-colmap-geometric.sh', 'tmp', 'run-colmap-photometric.sh', 'distorted', 'stereo', 'images']
     frames = sorted(
         (item for item in sub_paths if pattern.match(item)),
         key=lambda x: int(pattern.match(x).group(1))
@@ -437,5 +434,4 @@ if __name__ == "__main__":
     os.makedirs(args.output_path, exist_ok = True)
     with open(os.path.join(args.output_path, "cfg_args.json"), 'w') as f:
         f.write(json_namespace)
-    # train_one_frame(lp,op,pp,args)
     train_frames(lp,op,pp,args)
